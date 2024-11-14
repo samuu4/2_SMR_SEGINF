@@ -48,6 +48,8 @@ def ord_lis(lis_des):
     return lis_ord # Devolvemos la lista ordenada
 
 def cal_frq_let(cadena):
+    # Entrada: cadena de texto con el contenido cifrado
+    # Salida: lista de dos dimensiones indicando el número de veces que se repite cada caracter
 
     ele_sin_rep = list(set(cadena))
     var_rep = []
@@ -58,9 +60,14 @@ def cal_frq_let(cadena):
 
     # Ordenamos la lista de elementos de mayor a menor segun su frecuencia
     var_rep_ord = ord_lis(var_rep)
-    return var_rep_ord
+
+    return var_rep_ord # Devolvemos la lista con la frecuencia de cada caracter 
 
 def cal_clv_pro(ele_cad, ele_pro):
+    # Entrada: cadena de texto con el contenido cifrado
+    # Salida: lista de dos dimensiones indicando el número de veces que se repite cada caracter
+
+
     global abc
     abc = list("abcdefghijklmnñopqrstuvwxyz")
     pos_ele_cad = abc.index(ele_cad)
@@ -106,9 +113,9 @@ def ana_frq(cadena, num_let_cad):
     return lis_clv
 
 def ejecuta():
-
+    
     # Paso 1: Leer el contenido del archivo original
-    ruta = "C://Users//trabajo//Documents//IES Alberti//2_SMR//seg_inf//Tema2"
+    ruta = "C://Users//trabajo//Documents//IES_Alberti//2_SMR//seg_inf//Tema2"
     with open(ruta + "//mensaje_cifrado.txt", "r") as archivo_lectura:
         contenido = archivo_lectura.read()  # Leer todo el contenido
 
@@ -125,5 +132,6 @@ def ejecuta():
             cad = 60*"-" + "\n"
             archivo_escritura.write(cad)
 
+ejecuta()
 
 

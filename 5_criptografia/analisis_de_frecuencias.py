@@ -119,7 +119,7 @@ def ejecuta():
     with open(ruta + "//mensaje_cifrado.txt", "r") as archivo_lectura:
         contenido = archivo_lectura.read()  # Leer todo el contenido
 
-    # Paso 2: Llamamos a la función que desencriptará el mensaje
+    # Paso 2: Llamamos a la función que desencriptará el mensaje 
     cad_des_opc = ana_frq(contenido, 3)
 
     # Paso 3: Escribir el contenido en un archivo nuevo

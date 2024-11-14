@@ -36,9 +36,6 @@ medios sistemas de archivos o bases de datos, proteger las comunicaciones en com
 como el tráfico de la web o los correo electrónicos, etc.
 * **Comercio electrónico y finanzas en línea:** Protección de las transacciones en línea, en particular cuando
 tienen que ver con dinero: compras, ventas, préstamos, cambio de divisas, etc. 
-
----
-
 * **Firma digital:**  Verificación de la autenticidad de documentos electrónicos de manera digital.
 * **Criptomonedas y cadenas de bloques:** Las monedas digitales que utilizan la criptografía para garantizar la seguridad y transparencia de las transacciones pero la tecnología subyacente de [cadena de bloques](https://es.wikipedia.org/wiki/Cadena_de_bloques?useskin=vector)
 se utiliza justamente para asegurar la integridad e irrenunciabilidad de información legal, industrial y comercial
@@ -50,9 +47,6 @@ se utiliza justamente para asegurar la integridad e irrenunciabilidad de informa
 
 * Requiriendo que sepas implementar correctamente mecanismos de autenticación y autorización.
 * Requiriendo que sepas como almacenar adecuadamente contraseñas y otros secretos en bases de datos.
-
----
-
 * Requiriendo que sepas como inyectar secretos en tu código en tiempo de ejecución y durante el despliegue sin que los mismos sean parte de tu código fuente y mucho menos sean incluidos en repositorios bajo control de versiones.
 * Requiriendo que puedas utilizar sumas de verificación y firmas digitales en tus procesos de IT para garantizar la integridad y no repudio de los datos.
 
@@ -63,13 +57,9 @@ se utiliza justamente para asegurar la integridad e irrenunciabilidad de informa
 * **Criptografía de clave simétrica:** Se utiliza una única clave para cifrar y descifrar la información.
 Es eficiente para comunicaciones donde las partes confían entre sí.
 
---- 
-
 * **Criptografía de clave asimétrica:** Se utilizan dos claves diferentes, una pública y otra privada.
 La clave pública se utiliza para cifrar la información, y la clave privada para descifrarla.
 Es ideal para comunicaciones donde no hay confianza previa entre las partes.
-
---- 
 
 * **Funciones hash:** Se utilizan para generar un resumen digital de la información.
 Este resumen permite verificar la integridad de la información sin necesidad de descifrarla.
@@ -82,14 +72,8 @@ Este resumen permite verificar la integridad de la información sin necesidad de
 porque todos los que sepan esa clave podrán revertir el proceso de cifrado y obtener los archivos originales.
 * Cuando utilizas PGP o GPG en tus correos o creas una billetera crypto estas utilizando una clave asimétrica.
 De hecho, en el caso de las criptomonedas la dirección de la billetera se deriva de la llave pública.
-
----
-
 * Cuando descargas paquetes de Linux desde un repositorio autorizado y conocido. Se utiliza en este caso una clave asimetrica, ya que primero hay que descargar y registrar una llave pública
 que permite verificar que los paquetes provienen de una fuente oficial de la distribución o del proyecto opensource y no de una tercera parte que podría incluir en ellos código malicioso.
-
---- 
-
 * Finalmente, un ejemplo muy conocido del uso de funciones de hashes para realizar sumas de verificación que te debería resultar familiar, consiste en descargar una imagen ISO que nos permite instalar un sistema operativo como Windows o alguna distribución de Linux empleando una memoria USB. Como el archivo es grande y puede tener varios
 gigabytes el riesgo de que la información este corrupta por problemas en la descarga aumenta y antes de perder tiempo
 intentando hacer la instalación con una imagen producto de una descarga fallida calculamos la suma de verificación y confirmamos la integridad del archivo descargado comprobando que tenemos la descarga correcta.

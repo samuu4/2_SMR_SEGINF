@@ -18,13 +18,13 @@ def cal_max(lis_des):
             clave = lis_des[i][0]
             pos = i
 
-    # Modificamos los valores para colocar en la primera posición los valores maximos
-    max_ini[0][0] = clave
-    max_ini[0][1] = max
-
     # El valor que ocupaba la primera posición se almacena en la posición donde esta el maximo
     max_ini[pos][0] = lis_des[0][0]
     max_ini[pos][1] = lis_des[0][1]
+
+    # Modificamos los valores para colocar en la primera posición los valores maximos
+    max_ini[0][0] = clave
+    max_ini[0][1] = max
 
     return max_ini #Devuelve una lista
 
@@ -67,9 +67,8 @@ def cal_clv_pro(ele_cad, ele_pro):
     # Entrada: cadena de texto con el contenido cifrado
     # Salida: lista de dos dimensiones indicando el número de veces que se repite cada caracter
 
-
     global abc
-    abc = list("abcdefghijklmnñopqrstuvwxyz")
+    abc = list("abcdefghijklmnopqrstuvwxyz")
     pos_ele_cad = abc.index(ele_cad)
     pos_ele_pro = abc.index(ele_pro)
     if pos_ele_cad > pos_ele_pro:
@@ -115,22 +114,26 @@ def ana_frq(cadena, num_let_cad):
 def ejecuta():
     
     # Paso 1: Leer el contenido del archivo original
-    ruta = "C://Users//trabajo//Documents//IES_Alberti//2_SMR//seg_inf//Tema2"
+    ruta = ".//5_criptografia"
     with open(ruta + "//mensaje_cifrado.txt", "r") as archivo_lectura:
         contenido = archivo_lectura.read()  # Leer todo el contenido
 
     # Paso 2: Llamamos a la función que desencriptará el mensaje 
-    cad_des_opc = ana_frq(contenido, 3)
+    cad_des_opc = ana_frq(contenido, 5)
 
     # Paso 3: Escribir el contenido en un archivo nuevo
-    with open(ruta + "//archivo_salida.txt", "w") as archivo_escritura:
-        elementos = ["Caracter + frecuente", "Caracter + probable", "Clave", "Cadena descifrada"]
-        for i in range(len(cad_des_opc)):
-            for j in range(len(elementos)):
-                cad = elementos[j] + ": " + str(cad_des_opc[i][j]) + "\n"
-                archivo_escritura.write(cad)  # Escribir el contenido leído en el nuevo archivo
-            cad = 60*"-" + "\n"
-            archivo_escritura.write(cad)
+    try:
+        with open(ruta + "//archivo_salida.txt", "w") as archivo_escritura:
+            elementos = ["Caracter + frecuente", "Caracter + probable", "Clave", "Cadena descifrada"]
+            for i in range(len(cad_des_opc)):
+                for j in range(len(elementos)):
+                    cad = elementos[j] + ": " + str(cad_des_opc[i][j]) + "\n"
+                    archivo_escritura.write(cad)  # Escribir el contenido leído en el nuevo archivo
+                cad = 60*"-" + "\n"
+                archivo_escritura.write(cad)
+        print("Ejecutado correctamente. Abre el fichero 'archivo_salida.txt'")
+    except:
+        print("No se ha podido ejecutar correctamente")
 
 ejecuta()
 

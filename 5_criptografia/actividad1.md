@@ -15,6 +15,7 @@ Crea un mensaje secreto (que nadie de tus compañeros sepa) y cifrálo utilizand
 
 * **Instrucciones**:Sustituye cada letra del mensaje por el par de números que indica su posición en la tabla. Por ejemplo, "S" se convierte en "43".
 * **Clave**: 
+
 |   | 1 | 2 | 3 | 4 | 5 |
 |---|---|---|---|---|---|
 | 1 | A | B | C | D | E |

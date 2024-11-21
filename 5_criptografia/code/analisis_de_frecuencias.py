@@ -51,8 +51,10 @@ def cal_frq_let(cadena):
     # Entrada: cadena de texto con el contenido cifrado
     # Salida: lista de dos dimensiones indicando el número de veces que se repite cada caracter
 
+    # Variables auxiliares
     ele_sin_rep = list(set(cadena))
     var_rep = []
+
     # Contamos el numero de veces que se repite una letra dentro de la cadena original
     for let in ele_sin_rep:
         if let != " ":
@@ -64,12 +66,13 @@ def cal_frq_let(cadena):
     return var_rep_ord # Devolvemos la lista con la frecuencia de cada caracter 
 
 def cal_clv_pro(ele_cad, ele_pro):
-    # Entrada: cadena de texto con el contenido cifrado
-    # Salida: lista de dos dimensiones indicando el número de veces que se repite cada caracter
+    # Entrada: dos caracteres, uno de los seleccionados entre los mas frecuentes y otro seleccionado
+    # entre los mas probables.
+    # Salida: valor numérico que indica la clave (desplazamientos) del cifrado Cesar.
 
-    global abc
-    abc = list("abcdefghijklmnopqrstuvwxyz")
-    pos_ele_cad = abc.index(ele_cad)
+    global abc # La declaracion global indica que la variable abc existe fuera de la función
+    abc = list("abcdefghijklmnopqrstuvwxyz") # Lista con los elementos del abecedario
+    pos_ele_cad = abc.index(ele_cad) # Nos devuelve la posicion en la que se encuentra el elemento
     pos_ele_pro = abc.index(ele_pro)
     if pos_ele_cad > pos_ele_pro:
         clv = len(abc) - pos_ele_cad + pos_ele_pro
@@ -78,15 +81,19 @@ def cal_clv_pro(ele_cad, ele_pro):
     
     return clv
 
-def descifrado_cesar(cad_cif, des):
-    new_cad = ""
+def descifrado_cesar(cad_cif, clv):
+    # Entrada: La cadena original cifrada (criptograma) y la clave del algoritmo
+    # Salida: mensaje descifrado con la clave de entrada
 
-    if des >= len(abc):
-        des = des % len(abc)
+    # Variable auxiliar
+    new_cad = "" # Cadena vacía donde se irá creando la nueva cadena descifrada
+
+    if clv >= len(abc):
+        clv = clv % len(abc)
 
     for i in cad_cif:
         if i in abc:
-            pos = max(max(abc.index(i) - des, 0), (abc.index(i) - des) % len(abc))
+            pos = max(max(abc.index(i) - clv, 0), (abc.index(i) - clv) % len(abc))
             new_cad += abc[pos]
         else:
             new_cad += " "
@@ -94,6 +101,10 @@ def descifrado_cesar(cad_cif, des):
     return new_cad
 
 def ana_frq(cadena, num_let_cad):
+    # Entrada: cadena cifrada (criptograma) y parametro numerico que indicará el número
+    # de elementos mas frecuentes con los que trabajaremos. 
+    # Salida: Lista que devuelve el caracter mas frecuente seleccionado, el caracter más probable
+    # la clave, y la cadena descifrada utilizando esa clave.
 
     global let_max_frq
     let_max_frq = ["e", "a", "o", "l", "s", "n", "d"]
@@ -109,21 +120,21 @@ def ana_frq(cadena, num_let_cad):
             cad_des = descifrado_cesar(cadena, clv)
             lis_clv.append([ele_cad, ele_pro, clv ,cad_des])
     
-    return lis_clv
+    return lis_clv # Lista de listas
 
 def ejecuta():
     
     # Paso 1: Leer el contenido del archivo original
     ruta = ".//5_criptografia"
-    with open(ruta + "//mensaje_cifrado.txt", "r") as archivo_lectura:
+    with open(ruta + "//inputs//mensaje_cifrado.txt", "r") as archivo_lectura:
         contenido = archivo_lectura.read()  # Leer todo el contenido
 
-    # Paso 2: Llamamos a la función que desencriptará el mensaje 
-    cad_des_opc = ana_frq(contenido, 5)
+    # Paso 2: Llamamos a la función que desencriptará el mensaje
+    cad_des_opc = ana_frq(contenido, 5) # El parámetro 5 indica el numero de caracteres más frecuentes
 
     # Paso 3: Escribir el contenido en un archivo nuevo
     try:
-        with open(ruta + "//archivo_salida.txt", "w") as archivo_escritura:
+        with open(ruta + "//outputs//archivo_salida.txt", "w") as archivo_escritura:
             elementos = ["Caracter + frecuente", "Caracter + probable", "Clave", "Cadena descifrada"]
             for i in range(len(cad_des_opc)):
                 for j in range(len(elementos)):
